@@ -1,0 +1,100 @@
+@import "../../scss/mixins";
+@import "~bootstrap/scss/functions";
+@import "../../scss/bootstrap_variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+.carousel {
+	&_intro {
+		background-color: $black;
+		height: 100%;
+		/*.carousel-indicators {
+			bottom: auto;
+			top: 0;
+			margin: 1rem 15% 0;
+		}*/
+		.carousel-inner {
+			height: 100%;
+			background-color: inherit;
+		}
+		.carousel-item {
+			height: 100%;
+			position: relative;
+			&.active {
+				.carousel-bg {
+					transform: scale(1.15,1.15);
+				}
+				.carousel-title,
+				.carousel-lead {
+					transform: translate(0,0);
+					opacity: 1;
+				}
+			}
+			&.sliding {
+				.carousel-title,
+				.carousel-lead {
+					transform: translate(0,100%);
+					opacity: 0;
+				}
+			}
+		}
+		.carousel-bg {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-position: center;
+			background-size: cover;
+			margin-left: -5%;
+			transition: 7s ease-in-out;
+			transition-property: transform;
+			will-change: transform;
+			transform: scale(1,1);
+			&::before {
+				content: '';
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-color: rgba($black, 0.4);
+			}
+		}
+		.carousel-caption {
+			padding: 0;
+			overflow: hidden;
+			bottom: 20%;
+			top: 20%;
+			h2 {
+				@include gateway(font-size,35px,55px);
+			}
+		}
+		.carousel-lead,
+		.carousel-title {
+			transition: 0.4s;
+			will-change: transform, opacity;
+			transform: translate(0,-100%);
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+		.carousel-lead {
+			transition-delay: 0.3s;
+			top: 50%;
+			@include media-breakpoint-only(xs) {
+				font-size: 1.25rem;
+			}
+		}
+		.carousel-title {
+			bottom: 50%
+		}
+		.carousel-indicators {
+			bottom: auto;
+			top: 1rem;
+			margin-bottom: 0;
+		}
+	}
+
+}

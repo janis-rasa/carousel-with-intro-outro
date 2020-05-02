@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/functions";
+@import "bootstrap_variables";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+	color: $white;
+	background-color: $black;
+}
+.root {
+	height: 100%;
+}
