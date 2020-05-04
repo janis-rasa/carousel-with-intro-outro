@@ -1,4 +1,4 @@
-[React Bootstrap](https://react-bootstrap.netlify.app/) controlled carousel with intro and outro animation.
+[React Bootstrap](https://react-bootstrap.netlify.app/) multiple and controlled carousels with intro and outro animation. 
 
 ## Available Scripts
 

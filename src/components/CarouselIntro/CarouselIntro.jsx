@@ -1,8 +1,8 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import './Intro.scss'
+import './CarouselIntro.scss'
 
-function Intro() {
+function CarouselIntro() {
 	const slidesData = [
 		{
 			title: 'Can you believe',
@@ -20,7 +20,15 @@ function Intro() {
 		},
 	]
 
-	let itemRef = React.useRef(slidesData.map(() => React.createRef()))
+	const itemRef = React.useRef(slidesData.map(() => React.createRef()))
+
+	const introRef = React.useRef()
+
+	const setSectionHeight = () => {
+		let windowHeight = window.innerHeight
+		let element = introRef.current
+		element.style.height = windowHeight + "px"
+	}
 
 	const slides = slidesData.map(
 		(slide, index) => {
@@ -35,7 +43,7 @@ function Intro() {
 						style={slide.style}
 					/>
 					<Carousel.Caption>
-						<h2 className="carousel-title">{slide.title}</h2>
+						<h3 className="carousel-title">{slide.title}</h3>
 						<p className="carousel-lead lead mb-0">{slide.text}</p>
 					</Carousel.Caption>
 				</Carousel.Item>
@@ -51,7 +59,7 @@ function Intro() {
 
 	const handleSelect = (selectedIndex) => {
 		let element = itemRef.current[index].current
-		// Add custom class for carousel sliding. See more in Intro.scss
+		// Add custom class for carousel sliding. See more in CarouselMultiple.scss
 		element.classList.add("sliding")
 		// Setting the delay between the slide event and their change
 		setTimeout(() => {
@@ -65,22 +73,34 @@ function Intro() {
 	}
 
 	React.useEffect(() => {
+		setSectionHeight()
 		carouselStart()
+		window.addEventListener('resize', setSectionHeight)
+
+		return () => {
+			window.removeEventListener('resize', setSectionHeight)
+		}
 	}, [])
 
 	return (
-		<Carousel
-			className="carousel_intro"
-			fade={true}
-			activeIndex={index}
-			onSelect={handleSelect}
-			pause={false}
-			controls={false}
-			indicators={true}
+		<section
+			ref={introRef}
+			className="mb-5"
 		>
-			{slides}
-		</Carousel>
+			<h2 className="sr-only">Controlled carousel</h2>
+			<Carousel
+				className="carousel_intro"
+				fade={true}
+				activeIndex={index}
+				onSelect={handleSelect}
+				pause={false}
+				controls={false}
+				indicators={true}
+			>
+				{slides}
+			</Carousel>
+		</section>
 	)
 }
 
-export default Intro
+export default CarouselIntro
