@@ -6,43 +6,43 @@ function CarouselMultiple() {
 	const slidesData = [
 		{
 			id: 0,
-			image: 'https://i.picsum.photos/id/237/500/250.jpg',
+			image: 'https://picsum.photos/id/237/500/250.jpg',
 			title: 'Lorem Ipsum',
 			url: '#'
 		},
 		{
 			id: 1,
-			image: 'https://i.picsum.photos/id/238/500/250.jpg',
+			image: 'https://picsum.photos/id/238/500/250.jpg',
 			title: 'Dolor sit amet',
 			url: '#'
 		},
 		{
 			id: 2,
-			image: 'https://i.picsum.photos/id/239/500/250.jpg',
+			image: 'https://picsum.photos/id/239/500/250.jpg',
 			title: 'Consectetur adipiscing elit',
 			url: '#'
 		},
 		{
 			id: 3,
-			image: 'https://i.picsum.photos/id/240/500/250.jpg',
+			image: 'https://picsum.photos/id/240/500/250.jpg',
 			title: 'Phasellus leo ante',
 			url: '#'
 		},
 		{
 			id: 4,
-			image: 'https://i.picsum.photos/id/241/500/250.jpg',
+			image: 'https://picsum.photos/id/241/500/250.jpg',
 			title: 'Consectetur a condimentum vel',
 			url: '#'
 		},
 		{
 			id: 5,
-			image: 'https://i.picsum.photos/id/242/500/250.jpg',
+			image: 'https://picsum.photos/id/242/500/250.jpg',
 			title: 'Sodales id lectus',
 			url: '#'
 		},
 		{
 			id: 6,
-			image: 'https://i.picsum.photos/id/243/500/250.jpg',
+			image: 'https://picsum.photos/id/243/500/250.jpg',
 			title: 'Pellentesque laoreet',
 			url: '#'
 		}
@@ -96,7 +96,7 @@ function CarouselMultiple() {
 			<Carousel
 				fade={false}
 				indicators={true}
-				interval="5000"
+				interval={5000}
 				pause={false}
 				controls={true}
 				className="carousel_multiple"
