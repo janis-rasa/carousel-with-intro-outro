@@ -8,14 +8,14 @@ function CarouselIntro() {
 			title: 'Can you believe',
 			text: 'Than a react-bootstrap carousel can be more controlled?',
 			style: {
-				backgroundImage: 'url("/images/close-up-of-leaf-326055.jpg")'
+				backgroundImage: 'url("images/close-up-of-leaf-326055.jpg")'
 			}
 		},
 		{
 			title: 'Check this out',
 			text: 'And you will see',
 			style: {
-				backgroundImage: 'url("/images/landscape-nature-sky-person-33688.jpg")'
+				backgroundImage: 'url("images/landscape-nature-sky-person-33688.jpg")'
 			}
 		},
 	]
