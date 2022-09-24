@@ -1,28 +1,33 @@
 {
 	"name": "carousel-with-intro-outro",
-	"version": "1.1.5",
+	"version": "1.2.0",
 	"private": true,
 	"homepage": "https://janis-rasa.github.io/carousel-with-intro-outro/",
 	"dependencies": {
-		"@testing-library/jest-dom": "^5.11.1",
-		"@testing-library/react": "^10.4.7",
-		"@testing-library/user-event": "^12.0.11",
-		"bootstrap": "^4.5.0",
-		"node-sass": "^4.14.1",
-		"react": "^16.13.1",
-		"react-bootstrap": "^1.2.2",
-		"react-dom": "^16.13.1",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^14.4.3",
+		"babel-plugin-macros": "^3.1.0",
+		"bootstrap": "^5.2.1",
+		"react": "^18.2.0",
+		"react-bootstrap": "^2.5.0",
+		"react-dom": "^18.2.0",
 		"react-protected-mailto": "^1.0.3",
-		"react-scripts": "3.4.1"
+		"react-scripts": "5.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
-		"extends": "react-app"
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
 	},
 	"browserslist": {
 		"production": [
@@ -38,6 +43,8 @@
 		]
 	},
 	"devDependencies": {
-		"gh-pages": "^3.1.0"
+		"autoprefixer": "^10.4.7",
+		"gh-pages": "^4.0.0",
+		"sass": "^1.53.0"
 	}
 }

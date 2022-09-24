@@ -1,28 +1,18 @@
-import React from 'react'
-import Carousel from 'react-bootstrap/Carousel'
-import './CarouselIntro.scss'
+import React, { useRef, useState, useEffect } from "react"
+import Carousel from "react-bootstrap/Carousel"
+import { smoothScrollTo } from "../../utilities/smoothScrollTo"
+import "./CarouselIntro.scss"
+import { ReactComponent as ScrollDown } from "./ScrollDown.svg"
 
-function CarouselIntro() {
-	const slidesData = [
-		{
-			title: 'Can you believe',
-			text: 'Than a react-bootstrap carousel can be more controlled?',
-			style: {
-				backgroundImage: 'url("images/close-up-of-leaf-326055.jpg")'
-			}
-		},
-		{
-			title: 'Check this out',
-			text: 'And you will see',
-			style: {
-				backgroundImage: 'url("images/landscape-nature-sky-person-33688.jpg")'
-			}
-		},
-	]
+const CarouselIntro = (props) => {
+	const getLastSlide = () => {
+		return props.slidesData.length - 1
+	}
 
-	const itemRef = React.useRef(slidesData.map(() => React.createRef()))
+	const [carouselIndex, setCarouselIndex] = useState(getLastSlide)
 
-	const introRef = React.useRef()
+	let introRef = useRef(null)
+	let itemRefs = useRef([])
 
 	const setSectionHeight = () => {
 		let windowHeight = window.innerHeight
@@ -30,77 +20,74 @@ function CarouselIntro() {
 		element.style.height = windowHeight + "px"
 	}
 
-	const slides = slidesData.map(
-		(slide, index) => {
-			return (
-				<Carousel.Item
-					key={index}
-					ref={itemRef.current[index]}
-				>
-					<div
-						className="carousel-bg"
-						aria-hidden="true"
-						style={slide.style}
-					/>
-					<Carousel.Caption>
-						<h3 className="carousel-title">{slide.title}</h3>
-						<p className="carousel-lead lead mb-0">{slide.text}</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-			)
+	const setItemRef = (element) => {
+		if (itemRefs.current.length < props.slidesData.length) {
+			itemRefs.current = [...itemRefs.current, element]
 		}
-	)
-
-	const getLastSlide = () => {
-		return slidesData.length - 1
 	}
 
-	const [index, setIndex] = React.useState(getLastSlide)
+	const slides = props.slidesData.map((slide, currentIndex) => (
+		<Carousel.Item key={currentIndex}>
+			<div className='carousel-bg' aria-hidden='true' style={slide.style} />
+			<Carousel.Caption ref={setItemRef}>
+				<h3 className='carousel-title'>{slide.title}</h3>
+				<p className='carousel-lead lead mb-0'>{slide.text}</p>
+			</Carousel.Caption>
+		</Carousel.Item>
+	))
 
-	const handleSelect = (selectedIndex) => {
-		let element = itemRef.current[index].current
+	const handleSelect = (eventKey) => {
+		const currentSlide = itemRefs.current[carouselIndex]
+		const nextSlide = itemRefs.current[eventKey]
 		// Add custom class for carousel sliding. See more in CarouselMultiple.scss
-		element.classList.add("sliding")
+		currentSlide.classList.add("sliding")
+		nextSlide.classList.remove("sliding")
 		// Setting the delay between the slide event and their change
 		setTimeout(() => {
-			setIndex(selectedIndex)
+			setCarouselIndex(eventKey)
 		}, 500)
 	}
 
-
 	const carouselStart = () => {
-		setIndex(0)
+		setCarouselIndex(0)
 	}
 
-	React.useEffect(() => {
+	const scrollToNext = () => {
+		const target = introRef.current.nextSibling
+		smoothScrollTo(target)
+	}
+
+	useEffect(() => {
 		setSectionHeight()
 		carouselStart()
-		window.addEventListener('resize', setSectionHeight)
+		window.addEventListener("resize", setSectionHeight)
 
 		return () => {
-			window.removeEventListener('resize', setSectionHeight)
+			window.removeEventListener("resize", setSectionHeight)
 		}
 	}, [])
 
-	return (
-		<section
-			ref={introRef}
-			className="mb-5"
-		>
-			<h2 className="sr-only">Controlled carousel</h2>
-			<Carousel
-				className="carousel_intro"
-				fade={true}
-				activeIndex={index}
-				onSelect={handleSelect}
-				pause={false}
-				controls={false}
-				indicators={true}
-			>
-				{slides}
-			</Carousel>
-		</section>
-	)
+	if (props.slidesData.length) {
+		return (
+			<section ref={introRef} className='mb-5 position-relative'>
+				<h2 className='visually-hidden'>Controlled carousel</h2>
+				<Carousel
+					className='carousel_intro'
+					fade={true}
+					activeIndex={carouselIndex}
+					onSelect={handleSelect}
+					pause={false}
+					controls={true}
+					indicators={true}
+				>
+					{slides}
+				</Carousel>
+				<button type='button' className='scroll-down' onClick={scrollToNext}>
+					<ScrollDown />
+				</button>
+			</section>
+		)
+	}
 }
 
 export default CarouselIntro

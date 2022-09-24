@@ -21,23 +21,23 @@
 		}
 		.carousel-item {
 			padding-left: 0;
-			&:not(.prev)  {
+			&:not(.prev) {
 				visibility: visible;
 			}
 			> * {
 				float: left;
 			}
 			&.active,
-			&.carousel-item-next.carousel-item-left,
-			&.carousel-item-prev.carousel-item-right,
-			&.active.carousel-item-left,
+			&.carousel-item-next.carousel-item-start,
+			&.carousel-item-prev.carousel-item-end,
+			&.active.carousel-item-start,
 			&.carousel-item-prev,
-			&.active.carousel-item-right,
+			&.active.carousel-item-end,
 			&.carousel-item-next {
 				transform: translate3d(0, 0, 0);
 			}
 			&.carousel-item-prev,
-			&.active.carousel-item-left {
+			&.active.carousel-item-start {
 				@include media-breakpoint-up(lg) {
 					transform: translate(-25%, 0);
 				}
@@ -48,7 +48,7 @@
 					transform: translate(-100%, 0);
 				}
 			}
-			&.active.carousel-item-right,
+			&.active.carousel-item-end,
 			&.carousel-item-next {
 				@include media-breakpoint-up(lg) {
 					transform: translate(25%, 0);
@@ -60,9 +60,9 @@
 					transform: translate(100%, 0);
 				}
 			}
-			>.active.carousel-item-right,
+			> .active.carousel-item-end,
 			> .carousel-item-prev,
-			> .active.carousel-item-left {
+			> .active.carousel-item-start {
 				left: 0;
 			}
 			&__figure {
@@ -84,7 +84,7 @@
 				position: relative;
 
 				&::before {
-					content: '';
+					content: "";
 					display: block;
 					position: absolute;
 					left: 0;
@@ -93,14 +93,14 @@
 					bottom: 0;
 					opacity: 0;
 					background-color: $gray-800;
-					transition: opacity .3s;
+					transition: opacity 0.3s;
 					will-change: opacity;
 					z-index: 10;
 				}
 
 				&:hover {
 					&::before {
-						opacity: .5;
+						opacity: 0.5;
 					}
 
 					.carousel-item__caption {
@@ -116,7 +116,7 @@
 			&__img {
 				width: 100%;
 				transform: scale(1);
-				transition-duration: .3s;
+				transition-duration: 0.3s;
 				transition-property: -webkit-transform, transform;
 				will-change: -webkit-transform, transform;
 			}
@@ -130,7 +130,7 @@
 				color: $white;
 				width: 80%;
 				text-align: center;
-				transition-duration: .3s;
+				transition-duration: 0.3s;
 				transition-property: -webkit-transform, transform, opacity;
 				will-change: -webkit-transform, transform, opacity;
 				opacity: 0;

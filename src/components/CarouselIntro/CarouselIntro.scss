@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/functions";
 @import "../../scss/bootstrap_variables";
 @import "~bootstrap/scss/mixins/breakpoints";
+
 .carousel {
 	&_intro {
 		background-color: $black;
@@ -15,18 +16,18 @@
 			position: relative;
 			&.active {
 				.carousel-bg {
-					transform: scale(1.15,1.15);
+					transform: scale(1.15, 1.15);
 				}
 				.carousel-title,
 				.carousel-lead {
-					transform: translate(0,0);
+					transform: translate(0, 0);
 					opacity: 1;
 				}
 			}
-			&.sliding {
+			.sliding {
 				.carousel-title,
 				.carousel-lead {
-					transform: translate(0,100%);
+					transform: translate(0, 100%);
 					opacity: 0;
 				}
 			}
@@ -43,9 +44,9 @@
 			transition: 7s ease-in-out;
 			transition-property: transform;
 			will-change: transform;
-			transform: scale(1,1);
+			transform: scale(1, 1);
 			&::before {
-				content: '';
+				content: "";
 				position: absolute;
 				z-index: 1;
 				top: 0;
@@ -60,15 +61,16 @@
 			overflow: hidden;
 			bottom: 20%;
 			top: 20%;
-			h2 {
-				@include gateway(font-size,35px,55px);
+			z-index: 10;
+			h3 {
+				@include gateway(font-size, 35px, 55px);
 			}
 		}
 		.carousel-lead,
 		.carousel-title {
 			transition: 0.4s;
 			will-change: transform, opacity;
-			transform: translate(0,-100%);
+			transform: translate(0, -100%);
 			opacity: 0;
 			position: absolute;
 			left: 0;
@@ -82,7 +84,7 @@
 			}
 		}
 		.carousel-title {
-			bottom: 50%
+			bottom: 50%;
 		}
 		.carousel-indicators {
 			bottom: auto;
@@ -90,5 +92,36 @@
 			margin-bottom: 0;
 		}
 	}
+}
 
+.svg-scroll-down {
+	fill: currentColor;
+	display: block;
+	margin: 5px auto 0;
+	width: 30px;
+	height: auto;
+}
+
+.scroll-down {
+	cursor: pointer;
+	position: absolute;
+	outline: 0;
+	border: 0;
+	background: none;
+	box-shadow: none;
+	left: 50%;
+	z-index: 100;
+	color: #fff;
+	bottom: 15px;
+	.svg-scroll-down-arrow {
+		transform: translate(0, 0);
+		transition: 0.3s;
+		transition-property: -webkit-transform, transform;
+		will-change: -webkit-transform, transform;
+	}
+	&:hover {
+		.svg-scroll-down-arrow {
+			transform: translate(0, 25px);
+		}
+	}
 }
