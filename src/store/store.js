@@ -3,14 +3,16 @@ export const slidesDataIntro = [
 		title: "Can you believe",
 		text: "Than a react-bootstrap carousel can be more controlled?",
 		style: {
-			backgroundImage: 'url("../../images/close-up-of-leaf-326055.jpg")',
+			backgroundImage:
+				'url("https://janis-rasa.github.io/carousel-with-intro-outro/images/close-up-of-leaf-326055.jpg")',
 		},
 	},
 	{
 		title: "Check this out",
 		text: "And you will see",
 		style: {
-			backgroundImage: 'url("../../images/landscape-nature-sky-person-33688.jpg")',
+			backgroundImage:
+				'url("https://janis-rasa.github.io/carousel-with-intro-outro/images/landscape-nature-sky-person-33688.jpg")',
 		},
 	},
 ]
