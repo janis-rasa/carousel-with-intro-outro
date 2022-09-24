@@ -398,8 +398,8 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg: $white !default;
-$body-color: $gray-900 !default;
+$body-bg: #000;
+$body-color: $gray-500 !default;
 $body-text-align: null !default;
 
 // Links
@@ -536,9 +536,9 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
-	"Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-	"Noto Color Emoji" !default;
+$font-family-sans-serif: "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+	"Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+	"Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
 	monospace !default;
 // stylelint-enable value-keyword-case

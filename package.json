@@ -1,6 +1,6 @@
 {
 	"name": "carousel-with-intro-outro",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"private": true,
 	"homepage": "https://janis-rasa.github.io/carousel-with-intro-outro/",
 	"dependencies": {
@@ -43,8 +43,8 @@
 		]
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.7",
+		"autoprefixer": "^10.4.12",
 		"gh-pages": "^4.0.0",
-		"sass": "^1.53.0"
+		"sass": "^1.55.0"
 	}
 }

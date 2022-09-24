@@ -1,16 +1,18 @@
+@use "sass:math";
+
 // Gateway variables
 $max-viewport: 1801px;
 $min-viewport: 360px;
 $screen-vw: 99vw;
 
-@function gateway($start-size, $end-size) {
-	$m: ($end-size - $start-size) / ($max-viewport - $min-viewport);
+@function gatewayCalc($start-size, $end-size) {
+	$m: math.div($end-size - $start-size, $max-viewport - $min-viewport);
 	$b: round($start-size - $m * $min-viewport);
-	$screen-variable: round($m * $screen-vw * 100) / 100;
+	$screen-variable: math.div(round($m * $screen-vw * 100), 100);
 	@return calc(#{$screen-variable} + #{$b});
 }
 @mixin gateway($property-name, $start-size, $end-size) {
-	#{$property-name}: #{gateway($start-size, $end-size)};
+	#{$property-name}: #{gatewayCalc($start-size, $end-size)};
 	@media (min-width: $max-viewport) {
 		#{$property-name}: $end-size;
 	}
